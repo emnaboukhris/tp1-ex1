@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>     <link rel="stylesheet" href="/css/all.min.css">
+    </head>
+<body>
+<form action="">
+            <p>name :</p>
+            <input type="text"  id="num-two">
+            <p>content :</p>
+            <input type="text" id="num-one">
+        </form>
+        <ul id="add-sum"></ul>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+
+
+<button onclick="myFunction2()">Try it</button>
+
+<script>
+    function myFunction2(){
+var numOne = document.getElementById("num-one").value;
+var numTwo = document.getElementById("num-two").value;
+ var  addSum= numOne +" : " +numTwo + " " ; 
+  var node = document.createElement("OL");
+  var textnode = document.createTextNode(addSum);
+  node.appendChild(textnode);
+  document.getElementById("add-sum").appendChild(node);
+}
+document
+.querySelector("UL")
+.addEventListener("click",(e)=>e.target.parentNode.removeChild(e.target)); 
+
+</script>
+</body>
