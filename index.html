@@ -1,29 +1,103 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\css\bootstrap.min.css">
     <title>Document</title>
+    <style>
+div{
+
+
+    display : inline-grid ; 
+}
+body{
+	height: 100vh;
+	background: #684a0a;
+	background: linear-gradient(139deg,#74d171cb 0%,#ffa52fb6 60%);
+    padding : 50PX ;
+    position:relative; 
+
+}
+button {
+	margin: 0 20px;
+	background: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	font-size: 20px;
+	text-transform: uppercase;
+	padding: 30px;
+    border: none;
+	outline: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+    </style>
 </head>
 <body>
-  <h4> GUESS WITH ME  </h4>
+  <h1> GUESS WITH ME  </h1>
+  <div> <button  onclick="difficult()" id ="dificult"> difficult </button> </div>
+  <div> <button onclick="easy()" id="easy"> easy </button></div>
+  <div><button onclick="medium()" id="medium"> medium </button> </div>
+  <br> 
+  <h4>your score is : <span id="thisone">0</span></h4>
+
+  </table>
+  <br>
+  <button onclick="restart()"> restart  </button>
     <script>
-var nb=Math.floor(Math.random() * (10 + 1) );
-console.log("the number is" ,nb) ;
-var diff = prompt(" how many guess you want have ") ; 
-var newLocal = prompt("guess the number");
-var i=1; 
-while((i<diff) && (nb!=newLocal)){
+
+var score=1 ;
+var diff ;
+var guess=document.getElementById("guess");
+var nb ; 
+function difficult(){
+     nb=Math.floor(Math.random()*(100) );
+    diff=3 ;
+alert("you have 3 guess") ; 
+play(); 
+ }
+
+function easy() {
+     nb=Math.floor(Math.random()*(5) );
+    diff =10 ;
+    alert("you have 10 guess ");
+    play(); 
+
+}
+function medium(){
+     nb=Math.floor(Math.random()*(10) );
+diff = 5 ; 
+alert("you have 5 guess ")
+play(); 
+} 
+
+function play(){
+    console.log("the number is ", nb) ;
+    var i=1; 
+    guess = prompt("guess the number");
+while((i<diff) && (nb!=guess)){
     alert("try again ") ;
     i++ ;
-   newLocal = prompt("guess the number");
+   guess = prompt("guess the number");
 }
- if(i>diff){
-    alert("SORRY FOR YOU , YOU LOST") ;   
+ if(nb!=guess){
+    alert("SORRY FOR YOU , YOU LOST :( ") ;   
  }
- else {
- alert("good job you won ") ;}
+ else if(nb==guess){
+ alert("good job you won ") ;
+addone(); 
+}
+} 
+ function addone(){
+          var foo = document.getElementById('thisone').innerHTML;
+          foo++;
+          document.getElementById('thisone').innerHTML = foo;
+        }
+  function restart(){
+    var foo = document.getElementById('thisone').innerHTML;
+    document.getElementById('thisone').innerHTML = 0;
+  }
     </script>
 </body>
 </html>
